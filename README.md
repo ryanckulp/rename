@@ -2,20 +2,20 @@
 
 This gem allows you to rename your Rails application by using a single command.
 
-Tested up to Rails 6.1.
+Tested up to Rails 7.0.1.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'rename'
+gem 'rename', git: 'https://github.com/ryanckulp/rename'
 ```
 
 ## Usage
 
 ```
-rails g rename:into New-Name
+rails g rename:into new_app_name
 ```
 
 

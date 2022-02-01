@@ -5,7 +5,6 @@ module CommonMethods
 
   included do
     desc 'Rename your Rails application'
-
     argument :new_name, :type => :string, :default => ''
   end
 
@@ -59,10 +58,6 @@ module CommonMethods
       Dir['*', 'config/**/**/*.rb', '.{rvmrc}'].each do |file|
         # file = File.join(Dir.pwd, file)
         replace_into_file(file, /(#{@old_module_name}*)/m, @new_module_name)
-      end
-
-      Dir['app/mailers/*.rb', 'config/application-sample.yml', ].each do |file|
-        replace_into_file(file, /#{@old_module_name.underscore}/i, @new_name.underscore)
       end
 
       #Rename session key
