@@ -56,9 +56,13 @@ module CommonMethods
       puts 'Search and replace module in files...'
 
       #Search and replace module in to file
-      Dir['*', 'app/mailers/*.rb', 'config/application-sample.yml', 'config/**/**/*.rb', '.{rvmrc}'].each do |file|
+      Dir['*', 'config/**/**/*.rb', '.{rvmrc}'].each do |file|
         # file = File.join(Dir.pwd, file)
         replace_into_file(file, /(#{@old_module_name}*)/m, @new_module_name)
+      end
+
+      Dir['app/mailers/*.rb', 'config/application-sample.yml', ].each do |file|
+        replace_into_file(file, /#{@old_module_name.underscore}/i, @new_name.underscore)
       end
 
       #Rename session key
