@@ -56,7 +56,7 @@ module CommonMethods
       puts 'Search and replace module in files...'
 
       #Search and replace module in to file
-      Dir['*', 'config/**/**/*.rb', '.{rvmrc}'].each do |file|
+      Dir['*', 'mailers/*.rb', 'config/**/**/*.rb', '.{rvmrc}'].each do |file|
         # file = File.join(Dir.pwd, file)
         replace_into_file(file, /(#{@old_module_name}*)/m, @new_module_name)
       end
@@ -79,6 +79,7 @@ module CommonMethods
       replace_into_file('package.json', old_package_name_regex, new_package_name)
 
       puts 'Search and replace module in environment variables...'
+
       #Rename database
       replace_into_file('config/database.yml', /#{@old_module_name.underscore.upcase}/, @new_module_name.underscore.upcase)
     end
